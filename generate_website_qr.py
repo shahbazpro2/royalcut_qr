@@ -202,7 +202,7 @@ def build_luxury_stand(fancy_qr, url_text):
     return bg
 
 if __name__ == "__main__":
-    url = sys.argv[1] if len(sys.argv) > 1 else "http://192.168.0.100:3000"
+    url = sys.argv[1] if len(sys.argv) > 1 else "https://royalcut-qr.vercel.app/"
     print(f"Generating Salon Stand Poster with prestigious typography for: {url}")
     
     avatar = create_circular_avatar("profile.jpg", size=320, border_width=12)
