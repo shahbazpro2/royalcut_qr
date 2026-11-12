@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Cut Hair Salon | Kashi</title>
+  <style>
+    :root {
+      --bg: #0c0e12;
+      --card-bg: rgba(24, 28, 36, 0.75);
+      --card-border: rgba(212, 175, 55, 0.3);
+      --gold: #d4af37;
+      --gold-light: #f5e298;
+      --text: #f0f3f6;
+      --text-muted: #9ba3af;
+      --whatsapp: #25D366;
+      --instagram: #E1306C;
+      --tiktok: #00f2fe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 15%, #232733 0%, #0a0b0e 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 32px;
+      padding: 36px 24px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.12);
+      text-align: center;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Ambient Mirror Glow effect matching Kashi's salon photo */
+    .avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 18px;
+    }
+
+    .avatar-glow {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.6), transparent 70%);
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    .avatar-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+    }
+
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 18px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .link-card:hover, .link-card:active {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .link-card .left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .link-card .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .link-card .details h3 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .link-card .details span {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .link-card .arrow {
+      color: var(--text-muted);
+      font-size: 18px;
+      transition: transform 0.2s ease;
+    }
+
+    .link-card:hover .arrow {
+      transform: translateX(3px);
+      color: #fff;
+    }
+
+    /* Platform colors */
+    .link-card.whatsapp {
+      border-color: rgba(37, 211, 102, 0.35);
+    }
+    .link-card.whatsapp .icon-box {
+      background: rgba(37, 211, 102, 0.15);
+      color: #25D366;
+    }
+    .link-card.whatsapp:hover {
+      background: rgba(37, 211, 102, 0.1);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+    }
+
+    .link-card.instagram {
+      border-color: rgba(225, 48, 108, 0.35);
+    }
+    .link-card.instagram .icon-box {
+      background: linear-gradient(135deg, rgba(245, 133, 41, 0.2), rgba(221, 42, 123, 0.2), rgba(129, 52, 175, 0.2));
+      color: #e1306c;
+    }
+    .link-card.instagram:hover {
+      background: rgba(225, 48, 108, 0.1);
+      box-shadow: 0 8px 24px rgba(225, 48, 108, 0.25);
+    }
+
+    .link-card.tiktok {
+      border-color: rgba(0, 242, 254, 0.35);
+    }
+    .link-card.tiktok .icon-box {
+      background: rgba(0, 242, 254, 0.15);
+      color: #00f2fe;
+    }
+    .link-card.tiktok:hover {
+      background: rgba(0, 242, 254, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 242, 254, 0.25);
+    }
+
+    .buttons-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold), #b89125);
+      color: #0b0c10;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-gold:hover {
+      opacity: 0.92;
+      transform: scale(0.99);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    /* Salon QR Code Preview Box */
+    .qr-preview-box {
+      margin-top: 20px;
+      background: rgba(14, 16, 20, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 20px;
+      padding: 18px;
+      display: none;
+    }
+
+    .qr-preview-box.active {
+      display: block;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .qr-preview-box img {
+      width: 220px;
+      height: 220px;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: #636b79;
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="avatar-wrapper">
+      <div class="avatar-glow"></div>
+      <img src="kashi_avatar_gold.png" alt="Kashi - Royal Cut" class="avatar-img">
+    </div>
+
+    <div class="badge">
+      <svg viewBox="0 0 24 24" style="width: 14px; height: 14px;">
+        <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5m14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+      </svg>
+      Hair Salon &bull; Kashi
+    </div>
+    <h1>Royal Cut</h1>
+    <p class="subtitle">Premium Haircuts, Beard Grooming &amp; Styling</p>
+
+    <div class="links-list">
+      <!-- WhatsApp Booking Link -->
+      <a href="https://wa.me/923194678553?text=Hi%20Kashi,%20I%20would%20like%20to%20book%20an%20appointment%20at%20Royal%20Cut!" target="_blank" rel="noopener" class="link-card whatsapp">
+        <div class="left">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.02 2.6c.13.17 1.77 2.7 4.28 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.12-.22-.19-.47-.32z"/>
+            </svg>
+          </div>
+          <div class="details">
+            <h3>Book on WhatsApp</h3>
+            <span>0319-4678553 (Tap to Chat)</span>
+          </div>
+        </div>
+        <div class="arrow">&rarr;</div>
+      </a>
+
+      <!-- Instagram Link -->
+      <a href="https://www.instagram.com/Kashi_g00" target="_blank" rel="noopener" class="link-card instagram">
+        <div class="left">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="details">
+            <h3>Instagram</h3>
+            <span>@Kashi_g00</span>
+          </div>
+        </div>
+        <div class="arrow">&rarr;</div>
+      </a>
+
+      <!-- TikTok Link -->
+      <a href="https://www.tiktok.com/@Kashig0321" target="_blank" rel="noopener" class="link-card tiktok">
+        <div class="left">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.02 2.87.01 5.75-.02 8.62-.05 1.63-.49 3.25-1.36 4.63-1.03 1.62-2.58 2.89-4.39 3.55-1.77.67-3.75.67-5.54.06-2.02-.68-3.72-2.12-4.73-3.99-.95-1.77-1.22-3.87-.76-5.83.47-1.99 1.72-3.72 3.46-4.8 1.74-1.09 3.86-1.43 5.86-1.02v4.23c-1.06-.32-2.26-.26-3.26.24-.96.48-1.67 1.39-1.92 2.44-.27 1.09-.04 2.29.61 3.19.64.91 1.68 1.47 2.78 1.55 1.18.09 2.39-.33 3.18-1.21.68-.74.96-1.76.95-2.75.04-5.26.02-10.53.02-15.79z"/>
+            </svg>
+          </div>
+          <div class="details">
+            <h3>TikTok</h3>
+            <span>@Kashig0321</span>
+          </div>
+        </div>
+        <div class="arrow">&rarr;</div>
+      </a>
+    </div>
+
+    <div class="buttons-group">
+      <!-- Save Contact Button -->
+      <a href="kashi_contact.vcf" download="kashi_royalcut.vcf" class="btn-gold">
+        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </svg>
+        Save Contact to Phone
+      </a>
+
+      <!-- Show QR Code Toggle Button -->
+      <button onclick="toggleQR()" class="btn-outline">
+        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;">
+          <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v3h-2v-3zm3 3h3v5h-2v-3h-1v-2zm-3 2h2v3h-2v-3zm-2-2h2v2h-2v-2z"/>
+        </svg>
+        Show Salon QR Code
+      </button>
+    </div>
+
+    <!-- Collapsible Salon QR Code Box -->
+    <div id="qrBox" class="qr-preview-box">
+      <img src="salon_qr_with_photo.png" alt="Royal Cut Salon QR Code">
+      <p style="font-size: 13px; color: var(--gold-light); font-weight: 600;">Scan to Save Contact &amp; Connect</p>
+    </div>
+
+    <div class="footer">
+      &copy; Royal Cut Hair Salon &bull; Master Stylist Kashi
+    </div>
+  </div>
+
+  <script>
+    function toggleQR() {
+      const box = document.getElementById('qrBox');
+      box.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
